@@ -1,0 +1,14 @@
+.paginator {
+    display: flex;
+
+    .paginator-item {
+        flex-direction: column;
+        padding: .75rem;
+        margin: .2rem;
+        cursor: pointer;
+    }
+}
+
+.active {
+    background: #ccc;
+}

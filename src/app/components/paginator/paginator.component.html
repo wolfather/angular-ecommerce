@@ -1,0 +1,9 @@
+<div class="paginator" *ngIf="pagesNumber.length">
+    <div role="button" 
+        class="paginator-item"
+        *ngFor="let page of pagesNumber; trackBy:trackByLoop" 
+        [ngClass]="{active : currentPage === page}"
+        (click)="setPagination(page)">
+        {{ page | incrementValue }}
+    </div>
+</div>

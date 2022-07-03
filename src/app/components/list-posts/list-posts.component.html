@@ -1,0 +1,4 @@
+<app-posts-item 
+    *ngFor="let post of products | async; trackBy:trackByPostId" 
+    [post]="post">
+</app-posts-item>
