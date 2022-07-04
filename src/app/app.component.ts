@@ -34,5 +34,7 @@ export class AppComponent implements OnInit {
     const paginationParams = this.pagination.getHttpParams();
 
     this.products$ = this.fetch.getPosts(paginationParams);
+
+    console.log(this.products$);
   }
 }

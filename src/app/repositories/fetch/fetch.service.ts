@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Post } from 'src/app/entities/post.interface';
 import { PaginationService } from 'src/app/services/pagination/pagination.service';
+import { ProductPricingService } from 'src/app/services/product-pricing/product-pricing.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,17 @@ export class FetchService {
   constructor(
     private readonly http: HttpClient,
     private readonly pagination: PaginationService,
+    private readonly pricing: ProductPricingService,
   ) {
     this.pagination.setParams();
   }
 
   getPosts(params: HttpParams): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.url}/posts`, { params });
+    return this.http.get<Post[]>(`${this.url}/posts`, { params })
+      .pipe(map((products: Post[]) => (
+        products.map(product => (
+          {...product, price: this.pricing.getProductPrice(product)}
+        ))
+      )));
   }
 }
