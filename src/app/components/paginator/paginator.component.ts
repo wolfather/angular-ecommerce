@@ -9,13 +9,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class PaginatorComponent {
   @Output() setPage: EventEmitter<number> = new EventEmitter<number>(true);
-  @Input() pagesNumber!: number[];
+  @Input() pagesNumber: number[] = [];
   public currentPage = 0;
 
   constructor() {}
-
-  ngOnInit(): void {
-  }
 
   public setPagination(page: number): void {
     this.setPage.emit(page);

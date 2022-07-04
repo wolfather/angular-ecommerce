@@ -23,7 +23,7 @@ export class PaginationService {
     return obs;
   }
   
-  getHttpParams(): HttpParams {
+  public getHttpParams(): HttpParams {
     return this.params;
   }
 
