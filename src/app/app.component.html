@@ -1,10 +1,2 @@
 <h1>APp</h1>
-
-<div>
-    <app-list-posts [products]="products$"></app-list-posts>
-
-    <app-paginator 
-        *ngIf="pagesNumber.length" 
-        [pagesNumber]="pagesNumber"
-        (setPage)="changePage($event)"></app-paginator>
-</div>
+<app-product></app-product>

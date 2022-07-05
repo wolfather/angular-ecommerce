@@ -1,16 +1,20 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PaginationAbs } from './pagination.abs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PaginationService {
+export class PaginationService extends PaginationAbs {
   private params: HttpParams = new HttpParams();
   
-  constructor() { }
+  constructor() {
+    super();
+  }
 
-  setParams(start = 0): Observable<HttpParams> {
+  
+  public override setParams(start = 0): Observable<HttpParams> {
     const itemsPerPage = 5;
     const page = start === 0 ? 0 : start * itemsPerPage;
 
@@ -23,11 +27,11 @@ export class PaginationService {
     return obs;
   }
   
-  public getHttpParams(): HttpParams {
+  public override getHttpParams(): HttpParams {
     return this.params;
   }
 
-  createPaginator(): number[] {
+  public override createPaginator(): number[] {
     let pagesNumber: number[] = [];
 
     for(let i = 0; i < Math.round(100 / 5); i++) {

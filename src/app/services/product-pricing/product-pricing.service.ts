@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { Post } from '../../entities/post.interface';
 
 @Injectable({
@@ -8,7 +8,7 @@ export class ProductPricingService {
 
   constructor() { }
 
-  getProductPrice(item: Post): string {
+  getProductPrice(item?: Post): string {
     const value = Math.round(Math.random() * 9999).toFixed(2);
     const rawPrice = (parseFloat(value) * 1);
     const price = this.formatCurrency(rawPrice);

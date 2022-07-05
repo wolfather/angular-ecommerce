@@ -25,4 +25,26 @@ describe('PaginatorComponent', () => {
   it('should assert the currentPage prop is 0 by default', () => {
     expect(component.currentPage).toEqual(0);
   })
+
+  it('should test setPagination setting the currentPage property', () => {
+    const result = component.setPagination(2);
+
+    expect(component.currentPage).toEqual(2);
+  })
+  
+  it('should test setPagination setting the currentPage property', () => {
+    const emittedValue = 12;
+    const setPageSpy = spyOn(component.setPage, 'emit');
+
+    component.setPagination(emittedValue);
+
+    expect(setPageSpy).toHaveBeenCalledWith(emittedValue);
+    expect(setPageSpy).toHaveBeenCalledTimes(1);
+  })
+
+  it('should test trackByLoop returning a number', () => {
+    const result = component.trackByLoop(1, 10);
+
+    expect(result).toEqual(10);
+  })
 });

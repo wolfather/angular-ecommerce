@@ -6,7 +6,6 @@ import { FetchService } from './fetch.service';
 
 import { products } from '../../../stubs/products.stub';
 import { of } from 'rxjs';
-import { Post } from 'src/app/entities/post.interface';
 
 describe('FetchService', () => {
   let service: FetchService;
@@ -15,10 +14,6 @@ describe('FetchService', () => {
   let pricingSpy: jasmine.SpyObj<ProductPricingService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-      ]
-    });
     httpSpy = jasmine.createSpyObj('HttpClient', ['get']);
     paginationSpy = jasmine.createSpyObj('PaginationService', ['setParams', 'getHttpParams']);
     pricingSpy = jasmine.createSpyObj('ProductPricingService', ['getProductPrice']);
@@ -34,7 +29,6 @@ describe('FetchService', () => {
     const params = paginationSpy.getHttpParams();
 
     httpSpy.get.and.returnValue(of(products))
-
 
     service.getPosts(params).subscribe({
       next: (response) => {

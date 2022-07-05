@@ -10,10 +10,12 @@ import { PaginationService } from './services/pagination/pagination.service';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { ListPostsComponent } from './components/list-posts/list-posts.component';
 import { IncrementValuePipe } from './pipes/incrementvalue/increment-value.pipe';
+import { Product } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    Product,
     PostsItemComponent,
     PaginatorComponent,
     ListPostsComponent,
