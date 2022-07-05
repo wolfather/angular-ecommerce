@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Post } from 'src/app/entities/post.interface';
@@ -19,7 +19,11 @@ export class FetchService {
     this.pagination.setParams();
   }
 
-  getPosts(params: HttpParams): Observable<Post[]> {
+  getPosts(page: number): Observable<Post[]> {
+    this.pagination.setParams(page);
+
+    const params = this.pagination.getHttpParams();
+
     return this.http.get<Post[]>(`${this.url}/posts`, { params })
       .pipe(map((products: Post[]) => (
         products.map(product => (

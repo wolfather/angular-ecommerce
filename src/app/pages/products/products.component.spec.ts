@@ -26,8 +26,10 @@ describe('Products', () => {
     })
 
     it('should test changePage()', () => {
+        const fetchSpy = spyOn<any>(component, 'fetchData').and.callThrough();
         component.changePage(2);
 
-        expect(paginationServiceSpy.setParams).toHaveBeenCalledOnceWith(2);
+        //expect(paginationServiceSpy.setParams).toHaveBeenCalledOnceWith(2);
+        expect(fetchSpy).toHaveBeenCalledTimes(1);
     })
 })

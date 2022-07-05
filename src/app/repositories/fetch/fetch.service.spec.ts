@@ -26,11 +26,9 @@ describe('FetchService', () => {
   });
 
   it('should test getPosts', async () => {
-    const params = paginationSpy.getHttpParams();
-
     httpSpy.get.and.returnValue(of(products))
 
-    service.getPosts(params).subscribe({
+    service.getPosts(0).subscribe({
       next: (response) => {
         expect(response).not.toEqual(products);
       }
